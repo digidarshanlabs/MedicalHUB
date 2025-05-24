@@ -517,6 +517,25 @@ body {
     color: white;
     border-color: var(--accent-color);
 }
+html, body {
+      margin: 0; padding: 0; height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .content {
+      flex: 1; /* ये कंटेंट को जितना space चाहिए देगा */
+      padding: 20px;
+    }
+
+    footer {
+      background: #222;
+      color: #eee;
+      text-align: center;
+      padding: 15px 10px;
+      font-size: 14px;
+    }
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -567,10 +586,4 @@ body {
         right: 15px;
         font-size: 1.3rem;
     }
-}
-footer {
-    background-color: #222;
-    color: #eee;
-    text-align: center;
-    padding: 20px;
 }
