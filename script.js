@@ -7,7 +7,7 @@ let quizScore = 0;
 let diaryAutoSave;
 
 // Access Control
-const ACCESS_CODE = 'Dr. Prince';
+const ACCESS_CODE = '203040';
 
 // Initialize App
 window.onload = function() {
