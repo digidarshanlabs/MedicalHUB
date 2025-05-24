@@ -568,9 +568,9 @@ body {
         font-size: 1.3rem;
     }
 }
-    footer {
-      background-color: #222;
-      color: #eee;
-      text-align: center;
-      padding: 20px;
-    }
+footer {
+    background-color: #222;
+    color: #eee;
+    text-align: center;
+    padding: 20px;
+}
