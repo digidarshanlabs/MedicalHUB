@@ -48,8 +48,6 @@
       document.getElementById("dashboard").style.display = "none";
     }
   });
-import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
-const auth = getAuth();
 
 window.logout = function() {
   signOut(auth).then(() => {
@@ -59,7 +57,7 @@ window.logout = function() {
 </script>
 </head>
 <body class="light">
-    <!-- Theme Toggle Button -->
+  <!-- Theme Toggle Button -->
     <div class="toggle-btn" onclick="toggleTheme()">
         <span id="theme-icon">🌙</span>
     </div>
