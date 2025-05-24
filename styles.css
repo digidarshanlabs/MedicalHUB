@@ -534,6 +534,9 @@ html, body {
       text-align: center;
       padding: 15px 10px;
       font-size: 14px;
+			display: flex;
+      justify-content: center; /* Horizontal center */
+      align-items: center; 
     }
 
 
