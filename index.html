@@ -5,28 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealHub - Future Doctor's Study Companion</title>
     <link rel="stylesheet" href="styles.css">
-    <script type="module">
-  // Import the functions you need from the SDKs you need
+<script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
     apiKey: "AIzaSyAMqsQgsT8xJtiuJh3ER2eQ-p9OAS3WZ-U",
     authDomain: "healhub-d4972.firebaseapp.com",
     projectId: "healhub-d4972",
-    storageBucket: "healhub-d4972.firebasestorage.app",
+    storageBucket: "healhub-d4972.appspot.com",
     messagingSenderId: "338945165411",
     appId: "1:338945165411:web:f2b504323b7a50d0811056",
     measurementId: "G-XBSFQ72SMY"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  const auth = getAuth(app);
+
+  // 🔐 Login Function
+  window.login = function() {
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Hide login form, show dashboard
+        document.getElementById("login-box").style.display = "none";
+        document.getElementById("dashboard").style.display = "block";
+      })
+      .catch((error) => {
+        document.getElementById("login-error").innerText = "❌ " + error.message;
+      });
+  };
+
+  // ✅ Auto Login on Page Load
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      document.getElementById("login-box").style.display = "none";
+      document.getElementById("dashboard").style.display = "block";
+    } else {
+      document.getElementById("login-box").style.display = "block";
+      document.getElementById("dashboard").style.display = "none";
+    }
+  });
+import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
+const auth = getAuth();
+
+window.logout = function() {
+  signOut(auth).then(() => {
+    location.reload(); // logout के बाद पेज रीफ्रेश कर दे ताकि login दिखे
+  });
+};
 </script>
 </head>
 <body class="light">
@@ -36,15 +65,17 @@
     </div>
 
     <!-- Access Lock Screen -->
-    <div id="access-lock" class="access-container">
-        <div class="lock-card">
-            <h1>🏥 HealHub</h1>
-            <p>Enter access code to continue</p>
-            <input type="password" id="access-code" placeholder="Access Code" maxlength="20">
-            <button onclick="checkAccess()">Enter</button>
-            <div id="error-msg" class="error-hidden">Access Denied</div>
-        </div>
-    </div>
+<div id="access-lock" class="access-container">
+  <input type="email" id="login-email" placeholder="Your Email"><br>
+  <input type="password" id="login-password" placeholder="Your Password"><br>
+  <button onclick="login()">🔐 Login</button>
+  <p id="login-error" style="color: red;"></p>
+</div>
+
+<div id="dashboard" style="display:none;">
+  <h2>🎉 Welcome to HealHub Dashboard!</h2>
+  <!-- तेरी बाकी की वेबसाइट यहां दिखेगी -->
+</div>
 
     <!-- Main Dashboard -->
     <div id="dashboard" class="hidden">
@@ -80,6 +111,7 @@
                 </div>
             </div>
         </div>
+        <button onclick="logout()">🚪 Logout</button>
     </div>
 
     <!-- Notes Module -->
