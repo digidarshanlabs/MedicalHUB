@@ -5,7 +5,7 @@ let quizData = [];
 let currentQuizIndex = 0;
 let quizScore = 0;
 let diaryAutoSave;
-
+/*
 // Access Control
 const ACCESS_CODE = '203040';
 
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
+*/
 // Navigation Functions
 function showDashboard() {
     document.getElementById('access-lock').classList.add('hidden');
