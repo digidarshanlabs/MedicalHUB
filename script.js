@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 */
 // Navigation Functions
-//function showDashboard() {
+function showDashboard() {
     //document.getElementById('access-lock').classList.add('hidden');
     document.getElementById('dashboard').classList.remove('hidden');
     hideAllModules();
