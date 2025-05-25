@@ -684,6 +684,8 @@ function showDashboard() {
     if (!dashboard) return;
     dashboard.classList.remove('hidden');
     hideAllModules();
+    const accessLock = document.getElementById('access-lock');
+    if (accessLock) accessLock.classList.add('hidden');
 }
 
 function hideAllModules() {
@@ -1218,6 +1220,12 @@ function exportData() {
     link.click();
 
     URL.revokeObjectURL(url);
+}
+function logout() {
+    sessionStorage.removeItem('healhub_authenticated');
+    // Hide dashboard and show lock screen
+    document.getElementById('dashboard').classList.add('hidden');
+    document.getElementById('access-lock').classList.remove('hidden');
 }
 
 // Console welcome message
