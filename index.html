@@ -5,73 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealHub - Future Doctor's Study Companion</title>
     <link rel="stylesheet" href="styles.css">
-<!-- <script type="module">
-  /*import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyAMqsQgsT8xJtiuJh3ER2eQ-p9OAS3WZ-U",
-    authDomain: "healhub-d4972.firebaseapp.com",
-    projectId: "healhub-d4972",
-    storageBucket: "healhub-d4972.appspot.com",
-    messagingSenderId: "338945165411",
-    appId: "1:338945165411:web:f2b504323b7a50d0811056",
-    measurementId: "G-XBSFQ72SMY"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-
-  // 🔐 Login Function
-  window.login = function() {
-    const email = document.getElementById("login-email").value;
-    const password = document.getElementById("login-password").value;
-
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Hide login form, show dashboard
-        document.getElementById("login-box").style.display = "none";
-        document.getElementById("dashboard").style.display = "block";
-      })
-      .catch((error) => {
-        document.getElementById("login-error").innerText = "❌ " + error.message;
-      });
-  };
-
-  // ✅ Auto Login on Page Load
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      document.getElementById("login-box").style.display = "none";
-      document.getElementById("dashboard").style.display = "block";
-    } else {
-      document.getElementById("login-box").style.display = "block";
-      document.getElementById("dashboard").style.display = "none";
-    }
-  });
-
-window.logout = function() {
-  signOut(auth).then(() => {
-    location.reload(); // logout के बाद पेज रीफ्रेश कर दे ताकि login दिखे
-  });
-};*/
-</script>-->
 </head>
 <body class="light">
   <!-- Theme Toggle Button -->
-    <!--<div class="toggle-btn" onclick="toggleTheme()">
+    <div class="toggle-btn" onclick="toggleTheme()">
         <span id="theme-icon">🌙</span>
-    </div>-->
+    </div>
 
     <!-- Access Lock Screen -->
-<!--<div id="access-lock" class="access-container">
-  <input type="email" id="login-email" placeholder="Your Email"><br>
-  <input type="password" id="login-password" placeholder="Your Password"><br>
-  <button onclick="login()">🔐 Login</button>
-  <p id="login-error" style="color: red;"></p>
-</div>-->
-
+    <div id="access-lock" class="access-container">
+    <div class="lock-card">
+        <h1>🔒 Locked</h1>
+        <p>Enter your access code to use HealHub</p>
+        <input type="password" id="access-code" placeholder="Access Code">
+        <button type="button" onclick="checkAccess()">Unlock</button>
+        <div id="error-msg" class="error-hidden">Invalid code. Please try again.</div>
+    </div>
+    </div>
     <!-- Main Dashboard -->
-    <!--<div id="dashboard" class="hidden">-->
+    <div id="dashboard" class="hidden">
         <div class="container">
             <div class="welcome-banner">
                 <h1>🏥 Welcome to HealHub</h1>
@@ -201,8 +154,8 @@ window.logout = function() {
     </div>
 
     <script src="script.js"></script>
+    <footer>
+        <p>© 2025 DigiDarshan Labs. All rights reserved.</p>
+    </footer>
 </body>
-<footer>
-  <p>© 2025 DigiDarshan Labs. All rights reserved.</p>
-</footer>
 </html>
