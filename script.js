@@ -75,9 +75,9 @@ document.addEventListener('DOMContentLoaded', function() {
 // Navigation Functions
 //function showDashboard() {
     //document.getElementById('access-lock').classList.add('hidden');
-    //document.getElementById('dashboard').classList.remove('hidden');
-    //hideAllModules();
-//}
+    document.getElementById('dashboard').classList.remove('hidden');
+    hideAllModules();
+}
 
 function hideAllModules() {
     const modules = ['notes-module', 'flashcards-module', 'quiz-module', 'diary-module'];
